@@ -4,29 +4,39 @@ import java.util.List;
 
 public class CreateMap {
 
-    public static void printTab(int[][] map)
+    public static void printTab(char[][] map, int[] InitialPosition, int [] FinalPosition)
     {
-        for (int[] row : map) {
-            for (int cell : row) {
-                System.out.print(cell);
+        for (int row = 0; row < map.length; row++) {
+         for (int col = 0; col < map[0].length; col++) {
+            // Si c'est la position de départ
+            if (row == InitialPosition[0] && col == InitialPosition[1]) {
+                System.out.print('D'); // Départ
+            }
+            // Si c'est la position d'arrivée (et différente du départ)
+            else if (row == FinalPosition[0] && col == FinalPosition[1]) {
+                System.out.print('F'); // Fin
+            }
+            else {
+                System.out.print(map[row][col]); // Cellule normale
+            }
         }
             System.out.println();
         }
     }
  
-    public static int[][] loadMap(String pathToFile) throws IOException
+    public static char[][] loadMap(String pathToFile) throws IOException
     {
             
             Path pathToMap = Paths.get("carte.txt");
             List<String> lignes = Files.readAllLines(pathToMap);
 
             // ca charge un tableau de la taille du fichie
-            int[][] map = new int[lignes.size()][];
+            char[][] map = new char[lignes.size()][];
 
             for (int row = 0; row < lignes.size(); row++)
             {
                 String ligne = lignes.get(row);
-                map[row] = new int [ligne.length()];
+                map[row] = new char [ligne.length()];
 
                 for ( int column = 0 ; column < ligne.length() ;column ++){
 
@@ -34,9 +44,9 @@ public class CreateMap {
                     
                     if(atIndex == '#')
                     {
-                        map[row][column] = 1;
+                        map[row][column] = '#';
                     }
-                    else map[row][column] = 0;
+                    else map[row][column] = '°';
                     
                 }
             }
