@@ -52,7 +52,7 @@ public class Adventurer {
             }
             
 
-            if(move == 'O' && column -1 >= columns && map[row][column-1] != '#')
+            if(move == 'O' && column -1 >= 0 && map[row][column-1] != '#')
             {
                 ArrayofCoordinates[1] -=1;
                 map[row][column] = 'X';
