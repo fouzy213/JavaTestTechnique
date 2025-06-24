@@ -1,10 +1,11 @@
+
 public class Adventurer {
-    
+    //attribue//
     private String coordinates;
     private String instructions;
     
 
-
+//constructeur//
     public Adventurer( String coordinates, String instructions){
         this.coordinates = coordinates;
         this.instructions = instructions;
@@ -12,7 +13,7 @@ public class Adventurer {
 
     public int[] convertStringToIntCoordinates()
     {
-        String[] parts = this.coordinates.split(",");
+        String[] parts = this.coordinates.split(",");// "3,0"=> [3, 0]
         int row = Integer.parseInt(parts[0]);
         int col = Integer.parseInt(parts[1]);
 
@@ -25,17 +26,18 @@ public class Adventurer {
         int rows = map.length;
         int columns = map[0].length;
 
-        for(int index = 0; index < instructions.length(); index++)
+        for(int index = 0; index < instructions.length(); index++)  
         {
             int row = ArrayofCoordinates[0];
             int column = ArrayofCoordinates[1];
             char move = instructions.charAt(index);
 
-            if(move == 'S' &&  row + 1 < rows && map[row+1][column] != '#')
+            if(move == 'S' &&  row + 1 < rows && map[row+1][column] != '#') // si S et que le row +1 a la longueur du tab et qui n'ya pas de diez//
             {
-                ArrayofCoordinates[0] +=1;
-                map[row][column] = 'X';
+                ArrayofCoordinates[0] +=1; //rajoute +1 sur ton deplacement//
+                map[row][column] = 'X';  
             }
+               
             
             
             if(move == 'N' && row - 1 >= 0 && map[row-1][column] != '#')
